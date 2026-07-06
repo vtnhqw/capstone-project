@@ -72,6 +72,8 @@ class EduMindAgentGraph:
         topic = "General Subject"
         if "calc" in sanitized_input.lower():
             topic = "Calculus"
+        elif "c++" in sanitized_input.lower() or "cpp" in sanitized_input.lower() or "cplus" in sanitized_input.lower():
+            topic = "C++ Programming"
         elif "hist" in sanitized_input.lower():
             topic = "History"
         elif "cs" in sanitized_input.lower() or "code" in sanitized_input.lower() or "python" in sanitized_input.lower():
@@ -357,6 +359,35 @@ class EduMindAgentGraph:
                     }
                 ]
             }
+        elif topic == "C++ Programming":
+            return {
+                "modules": [
+                    {
+                        "id": 1,
+                        "title": "Module 1: C++ Syntax & Control Flow",
+                        "description": "Learn basic syntax, standard streams, primitive data types, scopes, and conditional loops.",
+                        "status": "in_progress",
+                        "hours": 3.5,
+                        "topics": ["std::cout stream", "Main Function Structure", "Variables & Constants"]
+                    },
+                    {
+                        "id": 2,
+                        "title": "Module 2: Pointers & Memory Allocations",
+                        "description": "Learn memory segments, dynamic heap allocation, pointer arithmetic, and reference types.",
+                        "status": "not_started",
+                        "hours": 5.0,
+                        "topics": ["Stack vs Heap Allocation", "Pointer Dereferencing", "Memory Leaks & Smart Pointers"]
+                    },
+                    {
+                        "id": 3,
+                        "title": "Module 3: Object-Oriented C++ Programming",
+                        "description": "Understand C++ classes, accessibility scopes, virtual functions, polymorphism, and memory destruction.",
+                        "status": "not_started",
+                        "hours": 6.0,
+                        "topics": ["Virtual Destructors", "Method Overriding", "Access specifiers (public/private)"]
+                    }
+                ]
+            }
         elif topic == "Computer Science":
             return {
                 "modules": [
@@ -463,6 +494,46 @@ class EduMindAgentGraph:
                     "answer": "A function is continuous at c if the limit as x approaches c exists, the function value f(c) is defined, and the limit equals f(c)."
                 }
             ]
+        elif "C++" in module_title or "Pointers" in module_title or "Syntax" in module_title or "Object-Oriented" in module_title:
+            if module_id == 1:
+                return [
+                    {
+                        "module_id": module_id,
+                        "question": "What is the difference between a pointer and a reference in C++?",
+                        "answer": "A pointer stores a memory address and can be re-assigned or null. A reference acts as an alias to an existing object, cannot be null, and cannot be re-assigned."
+                    },
+                    {
+                        "module_id": module_id,
+                        "question": "Why does every C++ console program require a 'main' function?",
+                        "answer": "The 'main' function is the entry point of execution for C++ compilation where runtime starts and returns an integer status code to the OS."
+                    }
+                ]
+            elif module_id == 2:
+                return [
+                    {
+                        "module_id": module_id,
+                        "question": "Explain stack vs heap memory allocation in C++.",
+                        "answer": "Stack is managed automatically, faster, but limited in size. Heap is dynamic, manual (using new/delete or smart pointers), larger, but slower and prone to memory leaks."
+                    },
+                    {
+                        "module_id": module_id,
+                        "question": "What is a smart pointer in modern C++?",
+                        "answer": "A smart pointer is a wrapper class like std::unique_ptr or std::shared_ptr that automatically manages heap allocation lifetimes using RAII."
+                    }
+                ]
+            else:
+                return [
+                    {
+                        "module_id": module_id,
+                        "question": "What is a virtual destructor and why should classes with virtual methods use them?",
+                        "answer": "A virtual destructor ensures that when a derived class is deleted through a base class pointer, the derived destructor is invoked, preventing resource leaks."
+                    },
+                    {
+                        "module_id": module_id,
+                        "question": "Explain dynamic polymorphism in C++.",
+                        "answer": "It is runtime function binding implemented using virtual functions and pointers, allowing a base class interface to invoke derived class methods dynamically."
+                    }
+                ]
         elif "Data Structures" in module_title or "Computer" in module_title:
             return [
                 {
