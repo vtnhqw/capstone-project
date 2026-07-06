@@ -1,6 +1,5 @@
-# Ignore Vibe Coding Hackathon guide files
-KAGGLE_WRITEUP.md
-VIDEO_SCRIPT.md
+# Ignore Vibe Coding Hackathon guide files folder
+notes/
 
 # Ignore local generated databases (keeps private data off GitHub)
 db_data/
